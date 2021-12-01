@@ -2,7 +2,6 @@ package com.grit.chatsample;
 
 import android.app.Application;
 import android.content.Intent;
-import android.content.SharedPreferences;
 
 import androidx.annotation.NonNull;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -28,25 +27,31 @@ public class application extends Application {
     DatabaseReference messageRef;
 
 
+    DatabaseReference senderMessageRef;
+    ValueEventListener senderEventListener;
+
+
+
     DatabaseReference lastMessageRef;
     ValueEventListener lastMessageEventListener;
 
 
+
     DatabaseReference checkUserExistDatabaseRef;
     ValueEventListener checkUserExistListener;
-
-    SharedPreferences mPrefs;
 
     @Override
     public void onCreate() {
         super.onCreate();
         database = FirebaseDatabase.getInstance();
 
-        mPrefs = getSharedPreferences("ChatPrefs", MODE_PRIVATE);
+
         userRef = database.getReference("users/");
         lastMessageRef = database.getReference("users/");
         messageRef = database.getReference("messages/");
+        senderMessageRef = database.getReference("messages/");
 
+        getUserContacts();
 
     }
 
@@ -97,6 +102,7 @@ public class application extends Application {
                 }else{
                     userVerificationCallback.handleVerification(false, Constants.VALIDATION_FAILED_MESSAGE, null);
                 }
+                checkUserExistDatabaseRef.removeEventListener(checkUserExistListener);
             }
 
             @Override
@@ -106,7 +112,7 @@ public class application extends Application {
     }
 
 
-    public void registerUser(Users user) {
+    void registerUser(Users user) {
         userRef.child(user.getUsername()).setValue(user);
     }
 
@@ -131,15 +137,6 @@ public class application extends Application {
                 Users prevUser=snapshot.getValue(Users.class);
                 prevUser.setLastMessage(message);
                 lastMessageRef.child(user).setValue(prevUser);
-
-                /*for (DataSnapshot ds : snapshot.getChildren()) {
-                    String key = ds.getKey();
-
-                    String username = ds.getValue(String.class);
-                    String password = ds.getValue(String.class);
-                    userRef.child(user).setValue(new Users(username,password,message));
-                }*/
-
             }
 
 
@@ -159,9 +156,7 @@ public class application extends Application {
 
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     Users users=ds.getValue(Users.class);
-                    assert users != null;
-                    if(!users.getUsername().equalsIgnoreCase(mPrefs.getString("username", "")))
-                        usersArrayList.add(users);
+                    usersArrayList.add(users);
                 }
 
                 Intent intent = new Intent(Constants.ADD_NEW_USER);
@@ -174,6 +169,33 @@ public class application extends Application {
 
             }
         });
+    }
+
+
+    public void getUserMessages(String sender,String receiver){
+        if(senderMessageRef!=null && senderEventListener!=null){
+            senderMessageRef.removeEventListener(senderEventListener);
+        }
+
+
+        senderMessageRef.child(receiver+"_"+sender).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    Message message=ds.getValue(Message.class);
+                    System.out.println("message = "+message.getMessage());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+
     }
 
 }
