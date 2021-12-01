@@ -18,7 +18,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.grit.chatsample.Constants.Constants;
 import com.grit.chatsample.Interface.UserVerificationCallback;
+import com.grit.chatsample.pojos.Message;
 import com.grit.chatsample.pojos.Users;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,19 +33,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         application app=(application) getApplicationContext();
+        //app.pushMessage(new Message("hamza","hello","12/1/2021"),"hamza","abdullah");
+        app.updateUserLastMessage("hamza","hello321");
 
 
-        for(int i=0;i<10;i++){
-            app.pushMessage("hello"+i,"hamza");
-        }
 
-        /*app.checkIfUserExist("hamza", new UserVerificationCallback() {
+        /*app.checkIfUserExist("hamza321", new UserVerificationCallback() {
             @Override
             public void handleVerification(boolean success, String message, Users user) {
                 Toast.makeText(getApplicationContext(),message,Toast.LENGTH_LONG).show();
 
                 if(success){
-                   app.registerUser(new Users("hamza","4321"));
+                   app.registerUser(new Users("hamza","4321",""));
                 }
             }
         });*/
@@ -73,8 +75,8 @@ public class MainActivity extends AppCompatActivity {
     private BroadcastReceiver addNewUserBroadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            String userName = intent.getStringExtra(Constants.USERNAME);
-            Toast.makeText(getApplicationContext(),"Add New User = "+userName,Toast.LENGTH_SHORT).show();
+            ArrayList<Users> user = intent.getParcelableArrayListExtra(Constants.USER);
+            Toast.makeText(getApplicationContext(),"Add New User = "+user.get(0).getUsername(),Toast.LENGTH_SHORT).show();
         }
     };
 
