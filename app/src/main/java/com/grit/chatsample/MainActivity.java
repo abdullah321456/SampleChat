@@ -32,8 +32,10 @@ public class MainActivity extends AppCompatActivity {
 
         application app=(application) getApplicationContext();
         //app.pushMessage(new Message("hamza","hello","12/1/2021"),"hamza","abdullah");
-        app.updateUserLastMessage("hamza","hello321");
+        //app.updateUserLastMessage("hamza","hello321");
 
+
+        app.getUserMessages("abdullah","hamza");
 
 
         /*app.checkIfUserExist("hamza321", new UserVerificationCallback() {

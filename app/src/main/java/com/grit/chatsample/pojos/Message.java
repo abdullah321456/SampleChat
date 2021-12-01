@@ -10,6 +10,9 @@ public class Message implements Parcelable {
         date = in.readString();
     }
 
+    public Message(){
+
+    }
     public static final Creator<Message> CREATOR = new Creator<Message>() {
         @Override
         public Message createFromParcel(Parcel in) {

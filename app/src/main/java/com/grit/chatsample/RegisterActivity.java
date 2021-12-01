@@ -83,7 +83,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                             if(success){
                                 app.registerUser(new Users(username.getText().toString(),
-                                        password.getText().toString()));
+                                        password.getText().toString(),""));
 
                                 AestheticDialog.showFlashDialog(RegisterActivity.this, "Success",
                                         "User register successfully! please login", AestheticDialog.SUCCESS);

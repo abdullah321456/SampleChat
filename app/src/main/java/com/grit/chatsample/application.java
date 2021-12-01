@@ -27,8 +27,14 @@ public class application extends Application {
     DatabaseReference messageRef;
 
 
+    DatabaseReference senderMessageRef;
+    ValueEventListener senderEventListener;
+
+
+
     DatabaseReference lastMessageRef;
     ValueEventListener lastMessageEventListener;
+
 
 
     DatabaseReference checkUserExistDatabaseRef;
@@ -43,6 +49,8 @@ public class application extends Application {
         userRef = database.getReference("users/");
         lastMessageRef = database.getReference("users/");
         messageRef = database.getReference("messages/");
+        senderMessageRef = database.getReference("messages/");
+
         getUserContacts();
 
     }
@@ -94,6 +102,7 @@ public class application extends Application {
                 }else{
                     userVerificationCallback.handleVerification(false, Constants.VALIDATION_FAILED_MESSAGE, null);
                 }
+                checkUserExistDatabaseRef.removeEventListener(checkUserExistListener);
             }
 
             @Override
@@ -128,15 +137,6 @@ public class application extends Application {
                 Users prevUser=snapshot.getValue(Users.class);
                 prevUser.setLastMessage(message);
                 lastMessageRef.child(user).setValue(prevUser);
-
-                /*for (DataSnapshot ds : snapshot.getChildren()) {
-                    String key = ds.getKey();
-
-                    String username = ds.getValue(String.class);
-                    String password = ds.getValue(String.class);
-                    userRef.child(user).setValue(new Users(username,password,message));
-                }*/
-
             }
 
 
@@ -169,6 +169,33 @@ public class application extends Application {
 
             }
         });
+    }
+
+
+    public void getUserMessages(String sender,String receiver){
+        if(senderMessageRef!=null && senderEventListener!=null){
+            senderMessageRef.removeEventListener(senderEventListener);
+        }
+
+
+        senderMessageRef.child(receiver+"_"+sender).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    Message message=ds.getValue(Message.class);
+                    System.out.println("message = "+message.getMessage());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+
     }
 
 }
