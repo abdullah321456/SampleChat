@@ -1,19 +1,17 @@
-package com.grit.chatsample;
+package com.grit.chatsample.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.grit.chatsample.Interface.UserVerificationCallback;
+import com.grit.chatsample.R;
+import com.grit.chatsample.application;
 import com.grit.chatsample.pojos.Users;
 import com.thecode.aestheticdialogs.AestheticDialog;
 
@@ -83,7 +81,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                             if(success){
                                 app.registerUser(new Users(username.getText().toString(),
-                                        password.getText().toString()));
+                                        password.getText().toString(),""));
 
                                 AestheticDialog.showFlashDialog(RegisterActivity.this, "Success",
                                         "User register successfully! please login", AestheticDialog.SUCCESS);

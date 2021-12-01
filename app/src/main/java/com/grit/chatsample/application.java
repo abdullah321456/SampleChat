@@ -2,6 +2,7 @@ package com.grit.chatsample;
 
 import android.app.Application;
 import android.content.Intent;
+import android.content.SharedPreferences;
 
 import androidx.annotation.NonNull;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -34,16 +35,18 @@ public class application extends Application {
     DatabaseReference checkUserExistDatabaseRef;
     ValueEventListener checkUserExistListener;
 
+    SharedPreferences mPrefs;
+
     @Override
     public void onCreate() {
         super.onCreate();
         database = FirebaseDatabase.getInstance();
 
-
+        mPrefs = getSharedPreferences("ChatPrefs", MODE_PRIVATE);
         userRef = database.getReference("users/");
         lastMessageRef = database.getReference("users/");
         messageRef = database.getReference("messages/");
-        getUserContacts();
+
 
     }
 
@@ -103,7 +106,7 @@ public class application extends Application {
     }
 
 
-    void registerUser(Users user) {
+    public void registerUser(Users user) {
         userRef.child(user.getUsername()).setValue(user);
     }
 
@@ -156,7 +159,9 @@ public class application extends Application {
 
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     Users users=ds.getValue(Users.class);
-                    usersArrayList.add(users);
+                    assert users != null;
+                    if(!users.getUsername().equalsIgnoreCase(mPrefs.getString("username", "")))
+                        usersArrayList.add(users);
                 }
 
                 Intent intent = new Intent(Constants.ADD_NEW_USER);

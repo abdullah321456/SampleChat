@@ -1,19 +1,19 @@
-package com.grit.chatsample;
+package com.grit.chatsample.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.grit.chatsample.Interface.UserVerificationCallback;
+import com.grit.chatsample.R;
+import com.grit.chatsample.application;
 import com.grit.chatsample.pojos.Users;
 import com.thecode.aestheticdialogs.AestheticDialog;
 
@@ -25,13 +25,19 @@ public class LoginActivity extends AppCompatActivity {
     TextInputLayout txtInLayoutUsername, txtInLayoutPassword;
 //    CheckBox rememberMe;
     application app;
+    SharedPreferences mPrefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
         app=(application) getApplicationContext();
-
+        mPrefs = getSharedPreferences("ChatPrefs", MODE_PRIVATE);
+        if(!mPrefs.getString("username", "").isEmpty()){
+            Intent mIntent = new Intent(LoginActivity.this, UserActivity.class);
+            startActivity(mIntent);
+            finish();
+        }
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         login = findViewById(R.id.login);
@@ -83,8 +89,14 @@ public class LoginActivity extends AppCompatActivity {
                             if(success){
                                 String serverPassword = user.getPassword();
                                 if(serverPassword.equalsIgnoreCase(password.getText().toString())){
-                                    AestheticDialog.showFlashDialog(LoginActivity.this, "Success",
-                                            "User login successfully", AestheticDialog.SUCCESS);
+//                                    AestheticDialog.showFlashDialog(LoginActivity.this, "Success",
+//                                            "User login successfully", AestheticDialog.SUCCESS);
+                                    mPrefs.edit().putString("username", username.getText().toString()).apply();
+                                    mPrefs.edit().putString("password", password.getText().toString()).apply();
+                                    Intent mIntent = new Intent(LoginActivity.this, UserActivity.class);
+                                    startActivity(mIntent);
+                                    finish();
+
                                 }else{
                                     Snackbar snackbar = Snackbar.make(view, "Password not correct, please use correct password",
                                             Snackbar.LENGTH_LONG);
