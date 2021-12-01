@@ -1,0 +1,208 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.grit.chatsample"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->D:\0. TSC Office\SampleChat\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="31" />
+9-->D:\0. TSC Office\SampleChat\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->D:\0. TSC Office\SampleChat\app\src\main\AndroidManifest.xml:4:5-66
+11-->D:\0. TSC Office\SampleChat\app\src\main\AndroidManifest.xml:4:22-64
+12
+13    <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
+14    <!-- <uses-sdk android:minSdkVersion="14"/> -->
+15    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+15-->[com.google.firebase:firebase-database:20.0.2] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\5bcdce8caf85b475da1bde4413c02f5a\jetified-firebase-database-20.0.2\AndroidManifest.xml:25:5-79
+15-->[com.google.firebase:firebase-database:20.0.2] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\5bcdce8caf85b475da1bde4413c02f5a\jetified-firebase-database-20.0.2\AndroidManifest.xml:25:22-76
+16    <uses-permission android:name="android.permission.WAKE_LOCK" />
+16-->[com.google.android.gms:play-services-measurement-api:20.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\15ea7828da6df684846d2035fe99cbcc\jetified-play-services-measurement-api-20.0.0\AndroidManifest.xml:24:5-68
+16-->[com.google.android.gms:play-services-measurement-api:20.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\15ea7828da6df684846d2035fe99cbcc\jetified-play-services-measurement-api-20.0.0\AndroidManifest.xml:24:22-65
+17    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+17-->[com.google.android.gms:play-services-measurement:20.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\fb071f7ea61f265efc31817878ecfcc3\jetified-play-services-measurement-20.0.0\AndroidManifest.xml:26:5-110
+17-->[com.google.android.gms:play-services-measurement:20.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\fb071f7ea61f265efc31817878ecfcc3\jetified-play-services-measurement-20.0.0\AndroidManifest.xml:26:22-107
+18
+19    <application
+19-->D:\0. TSC Office\SampleChat\app\src\main\AndroidManifest.xml:5:5-46:19
+20        android:name="com.grit.chatsample.application"
+20-->D:\0. TSC Office\SampleChat\app\src\main\AndroidManifest.xml:11:9-36
+21        android:allowBackup="true"
+21-->D:\0. TSC Office\SampleChat\app\src\main\AndroidManifest.xml:6:9-35
+22        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+22-->[androidx.core:core:1.7.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\595a5cbbc7655f1bb8876ce06701b852\core-1.7.0\AndroidManifest.xml:24:18-86
+23        android:debuggable="true"
+24        android:icon="@mipmap/ic_launcher"
+24-->D:\0. TSC Office\SampleChat\app\src\main\AndroidManifest.xml:7:9-43
+25        android:label="@string/app_name"
+25-->D:\0. TSC Office\SampleChat\app\src\main\AndroidManifest.xml:8:9-41
+26        android:roundIcon="@mipmap/ic_launcher_round"
+26-->D:\0. TSC Office\SampleChat\app\src\main\AndroidManifest.xml:9:9-54
+27        android:supportsRtl="true"
+27-->D:\0. TSC Office\SampleChat\app\src\main\AndroidManifest.xml:10:9-35
+28        android:testOnly="true"
+29        android:theme="@style/AppTheme" >
+29-->D:\0. TSC Office\SampleChat\app\src\main\AndroidManifest.xml:12:9-40
+30
+31        <!--
+32        <activity android:name=".MainActivity"
+33            android:exported="true">
+34            <intent-filter>
+35                <action android:name="android.intent.action.MAIN" />
+36
+37                <category android:name="android.intent.category.LAUNCHER" />
+38            </intent-filter>
+39        </activity>
+40        -->
+41        <activity
+41-->D:\0. TSC Office\SampleChat\app\src\main\AndroidManifest.xml:22:9-30:20
+42            android:name="com.grit.chatsample.activities.LoginActivity"
+42-->D:\0. TSC Office\SampleChat\app\src\main\AndroidManifest.xml:23:13-53
+43            android:exported="true" >
+43-->D:\0. TSC Office\SampleChat\app\src\main\AndroidManifest.xml:24:13-36
+44            <intent-filter>
+44-->D:\0. TSC Office\SampleChat\app\src\main\AndroidManifest.xml:25:13-29:29
+45                <action android:name="android.intent.action.MAIN" />
+45-->D:\0. TSC Office\SampleChat\app\src\main\AndroidManifest.xml:26:17-69
+45-->D:\0. TSC Office\SampleChat\app\src\main\AndroidManifest.xml:26:25-66
+46
+47                <category android:name="android.intent.category.LAUNCHER" />
+47-->D:\0. TSC Office\SampleChat\app\src\main\AndroidManifest.xml:28:17-77
+47-->D:\0. TSC Office\SampleChat\app\src\main\AndroidManifest.xml:28:27-74
+48            </intent-filter>
+49        </activity>
+50        <activity
+50-->D:\0. TSC Office\SampleChat\app\src\main\AndroidManifest.xml:32:9-35:20
+51            android:name="com.grit.chatsample.activities.RegisterActivity"
+51-->D:\0. TSC Office\SampleChat\app\src\main\AndroidManifest.xml:33:13-56
+52            android:exported="true" >
+52-->D:\0. TSC Office\SampleChat\app\src\main\AndroidManifest.xml:34:13-36
+53        </activity>
+54        <activity
+54-->D:\0. TSC Office\SampleChat\app\src\main\AndroidManifest.xml:37:9-40:20
+55            android:name="com.grit.chatsample.activities.UserActivity"
+55-->D:\0. TSC Office\SampleChat\app\src\main\AndroidManifest.xml:38:13-52
+56            android:exported="true" >
+56-->D:\0. TSC Office\SampleChat\app\src\main\AndroidManifest.xml:39:13-36
+57        </activity>
+58        <activity
+58-->D:\0. TSC Office\SampleChat\app\src\main\AndroidManifest.xml:42:9-45:20
+59            android:name="com.grit.chatsample.activities.ChatActivity"
+59-->D:\0. TSC Office\SampleChat\app\src\main\AndroidManifest.xml:43:13-52
+60            android:exported="true" >
+60-->D:\0. TSC Office\SampleChat\app\src\main\AndroidManifest.xml:44:13-36
+61        </activity>
+62
+63        <service
+63-->[com.google.firebase:firebase-database:20.0.2] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\5bcdce8caf85b475da1bde4413c02f5a\jetified-firebase-database-20.0.2\AndroidManifest.xml:29:9-35:19
+64            android:name="com.google.firebase.components.ComponentDiscoveryService"
+64-->[com.google.firebase:firebase-database:20.0.2] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\5bcdce8caf85b475da1bde4413c02f5a\jetified-firebase-database-20.0.2\AndroidManifest.xml:30:13-84
+65            android:directBootAware="true"
+65-->[com.google.firebase:firebase-common:20.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\a290a42657b5c166afc7163c07f133aa\jetified-firebase-common-20.0.0\AndroidManifest.xml:35:13-43
+66            android:exported="false" >
+66-->[com.google.firebase:firebase-database:20.0.2] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\5bcdce8caf85b475da1bde4413c02f5a\jetified-firebase-database-20.0.2\AndroidManifest.xml:31:13-37
+67            <meta-data
+67-->[com.google.firebase:firebase-database:20.0.2] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\5bcdce8caf85b475da1bde4413c02f5a\jetified-firebase-database-20.0.2\AndroidManifest.xml:32:13-34:85
+68                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+68-->[com.google.firebase:firebase-database:20.0.2] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\5bcdce8caf85b475da1bde4413c02f5a\jetified-firebase-database-20.0.2\AndroidManifest.xml:33:17-109
+69                android:value="com.google.firebase.components.ComponentRegistrar" />
+69-->[com.google.firebase:firebase-database:20.0.2] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\5bcdce8caf85b475da1bde4413c02f5a\jetified-firebase-database-20.0.2\AndroidManifest.xml:34:17-82
+70            <meta-data
+70-->[com.google.android.gms:play-services-measurement-api:20.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\15ea7828da6df684846d2035fe99cbcc\jetified-play-services-measurement-api-20.0.0\AndroidManifest.xml:30:13-32:85
+71                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+71-->[com.google.android.gms:play-services-measurement-api:20.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\15ea7828da6df684846d2035fe99cbcc\jetified-play-services-measurement-api-20.0.0\AndroidManifest.xml:31:17-139
+72                android:value="com.google.firebase.components.ComponentRegistrar" />
+72-->[com.google.android.gms:play-services-measurement-api:20.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\15ea7828da6df684846d2035fe99cbcc\jetified-play-services-measurement-api-20.0.0\AndroidManifest.xml:32:17-82
+73            <meta-data
+73-->[com.google.firebase:firebase-installations:17.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\753c49e116d9e717ba99b317388e058b\jetified-firebase-installations-17.0.0\AndroidManifest.xml:18:13-20:85
+74                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+74-->[com.google.firebase:firebase-installations:17.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\753c49e116d9e717ba99b317388e058b\jetified-firebase-installations-17.0.0\AndroidManifest.xml:19:17-127
+75                android:value="com.google.firebase.components.ComponentRegistrar" />
+75-->[com.google.firebase:firebase-installations:17.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\753c49e116d9e717ba99b317388e058b\jetified-firebase-installations-17.0.0\AndroidManifest.xml:20:17-82
+76        </service>
+77
+78        <provider
+78-->[com.google.firebase:firebase-common:20.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\a290a42657b5c166afc7163c07f133aa\jetified-firebase-common-20.0.0\AndroidManifest.xml:26:9-31:39
+79            android:name="com.google.firebase.provider.FirebaseInitProvider"
+79-->[com.google.firebase:firebase-common:20.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\a290a42657b5c166afc7163c07f133aa\jetified-firebase-common-20.0.0\AndroidManifest.xml:27:13-77
+80            android:authorities="com.grit.chatsample.firebaseinitprovider"
+80-->[com.google.firebase:firebase-common:20.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\a290a42657b5c166afc7163c07f133aa\jetified-firebase-common-20.0.0\AndroidManifest.xml:28:13-72
+81            android:directBootAware="true"
+81-->[com.google.firebase:firebase-common:20.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\a290a42657b5c166afc7163c07f133aa\jetified-firebase-common-20.0.0\AndroidManifest.xml:29:13-43
+82            android:exported="false"
+82-->[com.google.firebase:firebase-common:20.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\a290a42657b5c166afc7163c07f133aa\jetified-firebase-common-20.0.0\AndroidManifest.xml:30:13-37
+83            android:initOrder="100" />
+83-->[com.google.firebase:firebase-common:20.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\a290a42657b5c166afc7163c07f133aa\jetified-firebase-common-20.0.0\AndroidManifest.xml:31:13-36
+84
+85        <receiver
+85-->[com.google.android.gms:play-services-measurement:20.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\fb071f7ea61f265efc31817878ecfcc3\jetified-play-services-measurement-20.0.0\AndroidManifest.xml:29:9-33:20
+86            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+86-->[com.google.android.gms:play-services-measurement:20.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\fb071f7ea61f265efc31817878ecfcc3\jetified-play-services-measurement-20.0.0\AndroidManifest.xml:30:13-85
+87            android:enabled="true"
+87-->[com.google.android.gms:play-services-measurement:20.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\fb071f7ea61f265efc31817878ecfcc3\jetified-play-services-measurement-20.0.0\AndroidManifest.xml:31:13-35
+88            android:exported="false" >
+88-->[com.google.android.gms:play-services-measurement:20.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\fb071f7ea61f265efc31817878ecfcc3\jetified-play-services-measurement-20.0.0\AndroidManifest.xml:32:13-37
+89        </receiver>
+90
+91        <service
+91-->[com.google.android.gms:play-services-measurement:20.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\fb071f7ea61f265efc31817878ecfcc3\jetified-play-services-measurement-20.0.0\AndroidManifest.xml:35:9-38:40
+92            android:name="com.google.android.gms.measurement.AppMeasurementService"
+92-->[com.google.android.gms:play-services-measurement:20.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\fb071f7ea61f265efc31817878ecfcc3\jetified-play-services-measurement-20.0.0\AndroidManifest.xml:36:13-84
+93            android:enabled="true"
+93-->[com.google.android.gms:play-services-measurement:20.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\fb071f7ea61f265efc31817878ecfcc3\jetified-play-services-measurement-20.0.0\AndroidManifest.xml:37:13-35
+94            android:exported="false" />
+94-->[com.google.android.gms:play-services-measurement:20.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\fb071f7ea61f265efc31817878ecfcc3\jetified-play-services-measurement-20.0.0\AndroidManifest.xml:38:13-37
+95        <service
+95-->[com.google.android.gms:play-services-measurement:20.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\fb071f7ea61f265efc31817878ecfcc3\jetified-play-services-measurement-20.0.0\AndroidManifest.xml:39:9-43:72
+96            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+96-->[com.google.android.gms:play-services-measurement:20.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\fb071f7ea61f265efc31817878ecfcc3\jetified-play-services-measurement-20.0.0\AndroidManifest.xml:40:13-87
+97            android:enabled="true"
+97-->[com.google.android.gms:play-services-measurement:20.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\fb071f7ea61f265efc31817878ecfcc3\jetified-play-services-measurement-20.0.0\AndroidManifest.xml:41:13-35
+98            android:exported="false"
+98-->[com.google.android.gms:play-services-measurement:20.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\fb071f7ea61f265efc31817878ecfcc3\jetified-play-services-measurement-20.0.0\AndroidManifest.xml:42:13-37
+99            android:permission="android.permission.BIND_JOB_SERVICE" />
+99-->[com.google.android.gms:play-services-measurement:20.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\fb071f7ea61f265efc31817878ecfcc3\jetified-play-services-measurement-20.0.0\AndroidManifest.xml:43:13-69
+100
+101        <activity
+101-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\b98a5f19b35445d41c86654f8d0d32f6\jetified-play-services-base-17.1.0\AndroidManifest.xml:23:9-26:75
+102            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+102-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\b98a5f19b35445d41c86654f8d0d32f6\jetified-play-services-base-17.1.0\AndroidManifest.xml:24:13-79
+103            android:exported="false"
+103-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\b98a5f19b35445d41c86654f8d0d32f6\jetified-play-services-base-17.1.0\AndroidManifest.xml:25:13-37
+104            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+104-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\b98a5f19b35445d41c86654f8d0d32f6\jetified-play-services-base-17.1.0\AndroidManifest.xml:26:13-72
+105
+106        <meta-data
+106-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\b4a946a05efa4de178e1caf828aa0875\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+107            android:name="com.google.android.gms.version"
+107-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\b4a946a05efa4de178e1caf828aa0875\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+108            android:value="@integer/google_play_services_version" />
+108-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\b4a946a05efa4de178e1caf828aa0875\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+109
+110        <provider
+110-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\2266b65411c5cf0e6661fe204bebe49b\jetified-emoji2-1.0.0\AndroidManifest.xml:26:9-34:20
+111            android:name="androidx.startup.InitializationProvider"
+111-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\2266b65411c5cf0e6661fe204bebe49b\jetified-emoji2-1.0.0\AndroidManifest.xml:27:13-67
+112            android:authorities="com.grit.chatsample.androidx-startup"
+112-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\2266b65411c5cf0e6661fe204bebe49b\jetified-emoji2-1.0.0\AndroidManifest.xml:28:13-68
+113            android:exported="false" >
+113-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\2266b65411c5cf0e6661fe204bebe49b\jetified-emoji2-1.0.0\AndroidManifest.xml:29:13-37
+114            <meta-data
+114-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\2266b65411c5cf0e6661fe204bebe49b\jetified-emoji2-1.0.0\AndroidManifest.xml:31:13-33:52
+115                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+115-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\2266b65411c5cf0e6661fe204bebe49b\jetified-emoji2-1.0.0\AndroidManifest.xml:32:17-75
+116                android:value="androidx.startup" />
+116-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\2266b65411c5cf0e6661fe204bebe49b\jetified-emoji2-1.0.0\AndroidManifest.xml:33:17-49
+117            <meta-data
+117-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\fb799e336233a817b3071f4fa869c71e\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:31:13-33:52
+118                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+118-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\fb799e336233a817b3071f4fa869c71e\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:32:17-78
+119                android:value="androidx.startup" />
+119-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\Naveed Laptop\.gradle\caches\transforms-2\files-2.1\fb799e336233a817b3071f4fa869c71e\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:33:17-49
+120        </provider>
+121    </application>
+122
+123</manifest>
