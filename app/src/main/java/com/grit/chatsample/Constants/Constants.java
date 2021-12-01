@@ -10,6 +10,8 @@ public class Constants {
     public static String VALIDATION_SUCCESS_MESSAGE="User exist";
 
 
+    public static String ADD_NEW_USER="ADD_NEW_USER";
+    public static String USERNAME="USERNAME";
 
     public static String SUCCESS="SUCCESS";
     public static String ERROR_MESSAGE="ERROR_MESSAGE";

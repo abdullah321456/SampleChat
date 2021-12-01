@@ -28,46 +28,34 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Users user=new Users();
 
 
 
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference userRef = database.getReference("users/"+"abdullah321");
-
-        /*user.setUsername("abdullah");
-        user.setPassword("4321");
-        userRef.setValue(user);*/
-
-
-        userRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Users value = snapshot.getValue(Users.class);
-                if(value!=null){
-                    System.out.println("snapshot = "+value.getUsername()+" password = "+value.getPassword());
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                System.out.println("error = "+error.getDetails());
-            }
-        });
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+
+        LocalBroadcastManager.getInstance(MainActivity.this).registerReceiver(addNewUserBroadcastReceiver,
+                new IntentFilter(Constants.ADD_NEW_USER));
+
     }
 
 
+    private BroadcastReceiver addNewUserBroadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String userName = intent.getStringExtra(Constants.USERNAME);
+            Toast.makeText(getApplicationContext(),"Add New User = "+userName,Toast.LENGTH_SHORT).show();
+        }
+    };
 
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        LocalBroadcastManager.getInstance(MainActivity.this).unregisterReceiver(addNewUserBroadcastReceiver);
 
     }
 

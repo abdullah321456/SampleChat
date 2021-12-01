@@ -35,8 +35,16 @@ public class application extends Application {
         userRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Users user=snapshot.getValue(Users.class);
-                System.out.println("new user added = "+user.getPassword()+"  "+user.getUsername());
+
+                for(DataSnapshot ds : snapshot.getChildren()) {
+                    String key = ds.getKey();
+                    Intent intent = new Intent(Constants.ADD_NEW_USER);
+                    intent.putExtra(Constants.USERNAME,key);
+                    LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
+                }
+
+
+
             }
 
             @Override
