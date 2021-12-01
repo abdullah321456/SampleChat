@@ -18,7 +18,10 @@ import com.grit.chatsample.pojos.Users;
 public class application extends Application {
 
     FirebaseDatabase database;
+
     DatabaseReference userRef;
+
+    DatabaseReference messageRef;
 
     DatabaseReference checkUserExistDatabaseRef;
     ValueEventListener checkUserExistListener;
@@ -30,10 +33,7 @@ public class application extends Application {
 
 
         userRef = database.getReference("users/");
-
-
-        userRef.child("abdullah").setValue(new Users("abdullah","4321"));
-        userRef.child("abdullah3321").setValue(new Users("abdullah","4321"));
+        messageRef = database.getReference("messages/");
 
         userRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -126,5 +126,10 @@ public class application extends Application {
 
     void registerUser(Users user) {
         userRef.child(user.getUsername()).setValue(user);
+    }
+
+
+    void pushMessage(String message,String username){
+        messageRef.child(username).push().setValue(message);
     }
 }
