@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/chat_bg">
+
+    <RelativeLayout
+        android:id="@+id/rlAppbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:visibility="visible">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                app:layout_scrollFlags="scroll|enterAlways">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="?actionBarSize"
+                    android:visibility="visible">
+
+                    <LinearLayout
+                        android:id="@+id/ivBack"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="-10dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="@dimen/_38sdp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:padding="@dimen/_4sdp"
+                            app:srcCompat="@drawable/mapbox_ic_arrow_back">
+
+                        </ImageView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llNameDetail"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@id/ivBack"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:paddingStart="@dimen/_3sdp"
+                        android:paddingTop="0dp"
+                        android:paddingEnd="0dp"
+                        android:paddingBottom="2dp">
+
+
+                        <TextView
+                            android:id="@+id/nameTV"
+                            android:layout_width="@dimen/_130sdp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="6dp"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:maxLines="1"
+                            android:text=""
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:animateLayoutChanges="true">
+
+                            <TextView
+                                android:id="@+id/lastSeenTV"
+                                android:layout_width="@dimen/_70sdp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="6dp"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:text=""
+                                android:textColor="@color/white"
+                                android:textSize="12sp"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/sendOrRecordLayout"
+        android:layout_below="@+id/rlAppbar">
+
+        <!--android:layout_marginTop="10dp"-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/chat_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:dividerHeight="@dimen/_5sdp"
+            android:scrollbarSize="@dimen/_2sdp"
+            android:scrollbars="vertical"
+            android:stackFromBottom="true"
+            android:transcriptMode="alwaysScroll">
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/sendOrRecordLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:animateLayoutChanges="true"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:id="@+id/user_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/_4sdp"
+                    android:background="@drawable/rect_round"
+                    android:gravity="center_vertical">
+
+                    <EditText
+                        android:id="@+id/message"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@android:color/transparent"
+                        android:gravity="center_vertical"
+                        android:hint="Type a message"
+                        android:inputType="textMultiLine"
+                        android:isScrollContainer="true"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/grey_60"
+                        android:maxLines="5"
+                        android:minLines="1"
+                        android:padding="@dimen/_5sdp"
+                        android:scrollbars="vertical" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/sendButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:scaleType="centerInside"
+                android:visibility="visible"
+                app:backgroundTint="@color/colorPrimary"
+                android:tint="@color/colorPrimaryDark"
+                app:srcCompat="@drawable/input_send" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/spin_kit"
+        style="@style/SpinKitView.Wave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        app:SpinKit_Color="@color/colorAccent"/>
+
+</RelativeLayout>

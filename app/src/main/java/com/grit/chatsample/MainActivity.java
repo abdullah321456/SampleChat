@@ -64,6 +64,10 @@ public class MainActivity extends AppCompatActivity {
         LocalBroadcastManager.getInstance(MainActivity.this).registerReceiver(addNewUserBroadcastReceiver,
                 new IntentFilter(Constants.ADD_NEW_USER));
 
+
+        LocalBroadcastManager.getInstance(MainActivity.this).registerReceiver(addNewMessageBroadcastReceiver,
+                new IntentFilter(Constants.ADD_NEW_MESSAGE));
+
     }
 
 
@@ -76,10 +80,19 @@ public class MainActivity extends AppCompatActivity {
     };
 
 
+
+    private BroadcastReceiver addNewMessageBroadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            ArrayList<Message> messageArrayList = intent.getParcelableArrayListExtra(Constants.MESSAGE);
+            Toast.makeText(getApplicationContext(),"Add New Message = "+messageArrayList.size(),Toast.LENGTH_SHORT).show();
+        }
+    };
     @Override
     protected void onDestroy() {
         super.onDestroy();
         LocalBroadcastManager.getInstance(MainActivity.this).unregisterReceiver(addNewUserBroadcastReceiver);
+        LocalBroadcastManager.getInstance(MainActivity.this).unregisterReceiver(addNewMessageBroadcastReceiver);
 
     }
 

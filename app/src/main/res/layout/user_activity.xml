@@ -2,8 +2,6 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_gravity="center_horizontal"
@@ -14,18 +12,17 @@
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        tools:ignore="MissingConstraints">
+        android:background="@color/colorPrimary">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways">
 
             <RelativeLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
                 <TextView
@@ -44,7 +41,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_app_name"
                     android:text=""
-                    android:textColor="@color/black"
+                    android:textColor="@color/colorAccent"
                     android:textSize="@dimen/_10sdp" />
 
             </RelativeLayout>
@@ -60,5 +57,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </androidx.recyclerview.widget.RecyclerView>
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/spin_kit"
+        style="@style/SpinKitView.Wave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        app:SpinKit_Color="@color/colorAccent"/>
 
 </RelativeLayout>

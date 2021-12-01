@@ -9,6 +9,7 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.github.ybq.android.spinkit.SpinKitView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.grit.chatsample.Interface.UserVerificationCallback;
@@ -26,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
 //    CheckBox rememberMe;
     application app;
     SharedPreferences mPrefs;
+    SpinKitView spin_kit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(mIntent);
             finish();
         }
+        spin_kit = findViewById(R.id.spin_kit);
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         login = findViewById(R.id.login);
@@ -82,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
                     txtInLayoutPassword.setError("Password should not be empty");
                 } else {
                     //Here you can write the codes for checking password
-
+                    spin_kit.setVisibility(View.VISIBLE);
                     app.validateUserNamePassword(username.getText().toString(), new UserVerificationCallback() {
                         @Override
                         public void handleVerification(boolean success, String message, Users user) {
@@ -93,6 +96,7 @@ public class LoginActivity extends AppCompatActivity {
 //                                            "User login successfully", AestheticDialog.SUCCESS);
                                     mPrefs.edit().putString("username", username.getText().toString()).apply();
                                     mPrefs.edit().putString("password", password.getText().toString()).apply();
+                                    spin_kit.setVisibility(View.GONE);
                                     Intent mIntent = new Intent(LoginActivity.this, UserActivity.class);
                                     startActivity(mIntent);
                                     finish();

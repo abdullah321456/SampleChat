@@ -7,6 +7,7 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.github.ybq.android.spinkit.SpinKitView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.grit.chatsample.Interface.UserVerificationCallback;
@@ -23,12 +24,14 @@ public class RegisterActivity extends AppCompatActivity {
     TextInputLayout txtInLayoutUsername, txtInLayoutPassword, txtInLayoutConfirmPassword;
 //    CheckBox rememberMe;
     application app;
+    SpinKitView spin_kit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_activity);
         app=(application) getApplicationContext();
+        spin_kit = findViewById(R.id.spin_kit);
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         confirmpassword = findViewById(R.id.confirmpassword);
@@ -75,10 +78,11 @@ public class RegisterActivity extends AppCompatActivity {
                     AestheticDialog.showFlashDialog(RegisterActivity.this, "Error",
                             "Confirm password is not correct", AestheticDialog.ERROR);
                 }else{
+                    spin_kit.setVisibility(View.VISIBLE);
                     app.checkIfUserExist(username.getText().toString(), new UserVerificationCallback() {
                         @Override
                         public void handleVerification(boolean success, String message, Users user) {
-
+                            spin_kit.setVisibility(View.GONE);
                             if(success){
                                 app.registerUser(new Users(username.getText().toString(),
                                         password.getText().toString(),""));

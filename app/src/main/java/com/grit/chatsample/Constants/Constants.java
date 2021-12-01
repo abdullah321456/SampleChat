@@ -12,6 +12,10 @@ public class Constants {
 
     public static String ADD_NEW_USER="ADD_NEW_USER";
 
+    public static String ADD_NEW_MESSAGE="ADD_NEW_MESSAGE";
+
+    public static String MESSAGE="MESSAGE";
+
     public static String USER="USER";
     public static String USERNAME="USERNAME";
 

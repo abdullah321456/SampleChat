@@ -2,6 +2,7 @@ package com.grit.chatsample;
 
 import android.app.Application;
 import android.content.Intent;
+import android.content.SharedPreferences;
 
 import androidx.annotation.NonNull;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -40,12 +41,14 @@ public class application extends Application {
     DatabaseReference checkUserExistDatabaseRef;
     ValueEventListener checkUserExistListener;
 
+    SharedPreferences mPrefs;
+
     @Override
     public void onCreate() {
         super.onCreate();
         database = FirebaseDatabase.getInstance();
 
-
+        mPrefs = getSharedPreferences("ChatPrefs", MODE_PRIVATE);
         userRef = database.getReference("users/");
         lastMessageRef = database.getReference("users/");
         messageRef = database.getReference("messages/");
@@ -112,12 +115,12 @@ public class application extends Application {
     }
 
 
-    void registerUser(Users user) {
+    public void registerUser(Users user) {
         userRef.child(user.getUsername()).setValue(user);
     }
 
 
-    void pushMessage(Message message, String sender, String receiver) {
+    public void pushMessage(Message message, String sender, String receiver) {
 
         DatabaseReference senderRef = messageRef.child(sender + "_" + receiver).push();
         senderRef.setValue(message);
@@ -125,7 +128,7 @@ public class application extends Application {
 
     }
 
-    void updateUserLastMessage(String user, String message) {
+    public void updateUserLastMessage(String user, String message) {
 
         if (lastMessageEventListener != null && lastMessageRef != null) {
             lastMessageRef.removeEventListener(lastMessageEventListener);
@@ -156,7 +159,9 @@ public class application extends Application {
 
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     Users users=ds.getValue(Users.class);
-                    usersArrayList.add(users);
+                    assert users != null;
+                    if(!users.getUsername().equalsIgnoreCase(mPrefs.getString("username", "")))
+                            usersArrayList.add(users);
                 }
 
                 Intent intent = new Intent(Constants.ADD_NEW_USER);
@@ -181,10 +186,17 @@ public class application extends Application {
         senderMessageRef.child(receiver+"_"+sender).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                ArrayList<Message> messageArrayList=new ArrayList<>();
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     Message message=ds.getValue(Message.class);
+                    messageArrayList.add(message);
                     System.out.println("message = "+message.getMessage());
                 }
+                Intent intent = new Intent(Constants.ADD_NEW_MESSAGE);
+                intent.putParcelableArrayListExtra(Constants.MESSAGE, messageArrayList);
+                LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
+
             }
 
             @Override
