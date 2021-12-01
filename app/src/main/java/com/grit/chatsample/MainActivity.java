@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.grit.chatsample.Constants.Constants;
+import com.grit.chatsample.Interface.UserVerificationCallback;
 import com.grit.chatsample.pojos.Users;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,6 +29,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        application app=(application) getApplicationContext();
+
+        /*app.checkIfUserExist("hamza", new UserVerificationCallback() {
+            @Override
+            public void handleVerification(boolean success, String message, Users user) {
+                Toast.makeText(getApplicationContext(),message,Toast.LENGTH_LONG).show();
+
+                if(success){
+                   app.registerUser(new Users("hamza","4321"));
+                }
+            }
+        });*/
+
+        /*app.validateUserNamePassword("abdullah111", new UserVerificationCallback() {
+            @Override
+            public void handleVerification(boolean success, String message, Users user) {
+                Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
+            }
+        });*/
 
 
 

@@ -29,22 +29,22 @@ public class application extends Application {
         database = FirebaseDatabase.getInstance();
 
 
-        userRef= database.getReference("users");
+        userRef = database.getReference("users/");
 
+
+        userRef.child("abdullah").setValue(new Users("abdullah","4321"));
+        userRef.child("abdullah3321").setValue(new Users("abdullah","4321"));
 
         userRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                for(DataSnapshot ds : snapshot.getChildren()) {
+                for (DataSnapshot ds : snapshot.getChildren()) {
                     String key = ds.getKey();
                     Intent intent = new Intent(Constants.ADD_NEW_USER);
-                    intent.putExtra(Constants.USERNAME,key);
+                    intent.putExtra(Constants.USERNAME, key);
                     LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
                 }
-
-
-
             }
 
             @Override
@@ -54,22 +54,30 @@ public class application extends Application {
         });
     }
 
-    public void checkIfUserExist(String username, UserVerificationCallback userVerificationCallback){
+    public void checkIfUserExist(String username, UserVerificationCallback userVerificationCallback) {
 
-        if(checkUserExistDatabaseRef!=null && checkUserExistListener!=null){
+        if (checkUserExistDatabaseRef != null && checkUserExistListener != null) {
             checkUserExistDatabaseRef.removeEventListener(checkUserExistListener);
         }
 
-        checkUserExistDatabaseRef=database.getReference(username);
-        checkUserExistListener=checkUserExistDatabaseRef.addValueEventListener(new ValueEventListener() {
+        checkUserExistDatabaseRef = database.getReference("users/"+username);
+        checkUserExistListener = checkUserExistDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Users value = snapshot.getValue(Users.class);
 
-                if(value!=null){
-                    userVerificationCallback.handleVerification(false,Constants.REGISTRATION_FAILED_MESSAGE,value);
+
+                if(snapshot.hasChildren()){
+                    for (DataSnapshot ds : snapshot.getChildren()) {
+                        String key = ds.getKey();
+
+                        String username = ds.child("username").getValue(String.class);
+                        String password = ds.child("password").getValue(String.class);
+                        userVerificationCallback.handleVerification(false, Constants.REGISTRATION_FAILED_MESSAGE,
+                                new Users(username,password));
+                    }
                 }else{
-                    userVerificationCallback.handleVerification(true,Constants.REGISTRATION_SUCCESS_MESSAGE,null);
+                    userVerificationCallback.handleVerification(true, Constants.REGISTRATION_SUCCESS_MESSAGE, null);
+
                 }
             }
 
@@ -81,28 +89,31 @@ public class application extends Application {
     }
 
 
+    public void validateUserNamePassword(String username, UserVerificationCallback userVerificationCallback) {
 
-
-
-
-
-    public void validateUserNamePassword(String username,UserVerificationCallback userVerificationCallback){
-
-        if(checkUserExistDatabaseRef!=null && checkUserExistListener!=null){
+        if (checkUserExistDatabaseRef != null && checkUserExistListener != null) {
             checkUserExistDatabaseRef.removeEventListener(checkUserExistListener);
         }
 
-        checkUserExistDatabaseRef=database.getReference(username);
-        checkUserExistListener=checkUserExistDatabaseRef.addValueEventListener(new ValueEventListener() {
+        checkUserExistDatabaseRef = database.getReference("users/"+username);
+        checkUserExistListener = checkUserExistDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Users value = snapshot.getValue(Users.class);
 
-                if(value==null){
-                   userVerificationCallback.handleVerification(false,Constants.VALIDATION_FAILED_MESSAGE,null);
+                if(snapshot.hasChildren()){
+                    for (DataSnapshot ds : snapshot.getChildren()) {
+                        String key = ds.getKey();
+
+                        String username = ds.child("username").getValue(String.class);
+                        String password = ds.child("password").getValue(String.class);
+                        userVerificationCallback.handleVerification(true, Constants.VALIDATION_SUCCESS_MESSAGE,
+                                new Users(username,password));
+                    }
                 }else{
-                    userVerificationCallback.handleVerification(true,Constants.VALIDATION_SUCCESS_MESSAGE,value);
+                    userVerificationCallback.handleVerification(false, Constants.VALIDATION_FAILED_MESSAGE, null);
+
                 }
+
             }
 
             @Override
@@ -113,9 +124,7 @@ public class application extends Application {
     }
 
 
-
-
-    void registerUser(Users user){
-        userRef.setValue(user);
+    void registerUser(Users user) {
+        userRef.child(user.getUsername()).setValue(user);
     }
 }
