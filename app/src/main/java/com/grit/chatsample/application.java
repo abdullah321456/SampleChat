@@ -65,6 +65,7 @@ public class application extends Application {
                 }else{
                     userVerificationCallback.handleVerification(true, Constants.REGISTRATION_SUCCESS_MESSAGE, null);
                 }
+                checkUserExistDatabaseRef.removeEventListener(checkUserExistListener);
             }
 
             @Override
