@@ -31,6 +31,11 @@ public class MainActivity extends AppCompatActivity {
 
         application app=(application) getApplicationContext();
 
+
+        for(int i=0;i<10;i++){
+            app.pushMessage("hello"+i,"hamza");
+        }
+
         /*app.checkIfUserExist("hamza", new UserVerificationCallback() {
             @Override
             public void handleVerification(boolean success, String message, Users user) {
@@ -48,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
             }
         });*/
+
+
 
 
 
