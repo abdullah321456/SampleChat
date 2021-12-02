@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.ybq.android.spinkit.SpinKitView;
 import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.snackbar.Snackbar;
 import com.grit.chatsample.Constants.Constants;
 import com.grit.chatsample.R;
 import com.grit.chatsample.adapters.ChatAdapter;
@@ -57,9 +58,6 @@ public class ChatActivity extends AppCompatActivity{
     RecyclerView recyclerView;
     public ArrayList<Message> chatMessages = new ArrayList<>();
 
-    private LinearLayout ivBack2;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,9 +81,6 @@ public class ChatActivity extends AppCompatActivity{
     @Override
     protected void onResume() {
         super.onResume();
-
-
-        spin_kit.setVisibility(View.VISIBLE);
 
         LocalBroadcastManager.getInstance(ChatActivity.this).registerReceiver(addNewMessageBroadcastReceiver,
                 new IntentFilter(Constants.ADD_NEW_MESSAGE));
@@ -163,15 +158,24 @@ public class ChatActivity extends AppCompatActivity{
                     Toast.makeText(activity, "Can't send empty message!", Toast.LENGTH_SHORT).show();
                 } else {
 
-                    spin_kit.setVisibility(View.VISIBLE);
-                    String date = String.valueOf(android.text.format.DateFormat.format("dd-MM-yyyy", new java.util.Date()));
+                    if(application.status){
+                        spin_kit.setVisibility(View.VISIBLE);
+                        String date = String.valueOf(android.text.format.DateFormat.format("dd-MM-yyyy", new java.util.Date()));
 
-                    app.pushMessage(new Message(sender_name, message, date), sender_name, receiver_name);
-                    app.updateUserLastMessage(sender_name,receiver_name, message);
-                    app.updateUserLastMessage(receiver_name,sender_name, message);
+                        app.pushMessage(new Message(sender_name, message, date), sender_name, receiver_name);
+                        app.updateUserLastMessage(sender_name,receiver_name, message);
+                        app.updateUserLastMessage(receiver_name,sender_name, message);
 
 
-                    message_edt.setText("");
+                        message_edt.setText("");
+                    }else{
+                        Snackbar snackbar = Snackbar.make(v, "Please check your internet connection",
+                                Snackbar.LENGTH_LONG);
+                        View snackbarView = snackbar.getView();
+                        snackbarView.setBackgroundColor(getResources().getColor(R.color.red));
+                        snackbar.show();
+                    }
+
                 }
 
             }

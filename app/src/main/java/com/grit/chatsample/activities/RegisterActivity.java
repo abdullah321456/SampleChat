@@ -81,25 +81,32 @@ public class RegisterActivity extends AppCompatActivity {
                     AestheticDialog.showFlashDialog(RegisterActivity.this, "Error",
                             "Confirm password is not correct", AestheticDialog.ERROR);
                 }else{
-                    spin_kit.setVisibility(View.VISIBLE);
-                    app.checkIfUserExist(username.getText().toString(), new UserVerificationCallback() {
-                        @Override
-                        public void handleVerification(boolean success, String message, Users user) {
-                            spin_kit.setVisibility(View.GONE);
-                            if(success){
-                                app.registerUser(new Users(username.getText().toString(),
-                                        password.getText().toString(),new HashMap<>(),true));
+                    if(application.status){
+                        spin_kit.setVisibility(View.VISIBLE);
+                        app.checkIfUserExist(username.getText().toString(), new UserVerificationCallback() {
+                            @Override
+                            public void handleVerification(boolean success, String message, Users user) {
+                                spin_kit.setVisibility(View.GONE);
+                                if(success){
+                                    app.registerUser(new Users(username.getText().toString(),
+                                            password.getText().toString(),new HashMap<>(),true));
 
-                                AestheticDialog.showFlashDialog(RegisterActivity.this, "Success",
-                                        "User register successfully! please login", AestheticDialog.SUCCESS);
+                                    AestheticDialog.showFlashDialog(RegisterActivity.this, "Success",
+                                            "User register successfully! please login", AestheticDialog.SUCCESS);
 //                                finish();
-                            }else{
-                                AestheticDialog.showFlashDialog(RegisterActivity.this, "Error",
-                                        "User already exist", AestheticDialog.ERROR);
+                                }else{
+                                    AestheticDialog.showFlashDialog(RegisterActivity.this, "Error",
+                                            "User already exist", AestheticDialog.ERROR);
+                                }
                             }
-                        }
-                    });
-
+                        });
+                    }else{
+                        Snackbar snackbar = Snackbar.make(view, "Please check internet connection!",
+                                Snackbar.LENGTH_LONG);
+                        View snackbarView = snackbar.getView();
+                        snackbarView.setBackgroundColor(getResources().getColor(R.color.red));
+                        snackbar.show();
+                    }
                 }
 //                if (rememberMe.isChecked()) {
 //                    //Here you can write the codes if box is checked

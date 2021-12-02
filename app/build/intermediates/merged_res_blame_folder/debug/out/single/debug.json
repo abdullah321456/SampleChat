@@ -8,32 +8,32 @@
         "source": "D:\\0. TSC Office\\SampleChat\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
-        "merged": "D:\\0. TSC Office\\SampleChat\\app\\build\\intermediates\\res\\merged\\debug\\menu_main.xml.flat",
-        "source": "D:\\0. TSC Office\\SampleChat\\app\\src\\main\\res\\menu\\main.xml"
-    },
-    {
         "merged": "D:\\0. TSC Office\\SampleChat\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_foreground.png.flat",
         "source": "D:\\0. TSC Office\\SampleChat\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png"
     },
     {
-        "merged": "D:\\0. TSC Office\\SampleChat\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_balloon_incoming_normal.9.png.flat",
-        "source": "D:\\0. TSC Office\\SampleChat\\app\\src\\main\\res\\drawable-hdpi\\balloon_incoming_normal.9.png"
-    },
-    {
-        "merged": "D:\\0. TSC Office\\SampleChat\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "D:\\0. TSC Office\\SampleChat\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+        "merged": "D:\\0. TSC Office\\SampleChat\\app\\build\\intermediates\\res\\merged\\debug\\menu_main.xml.flat",
+        "source": "D:\\0. TSC Office\\SampleChat\\app\\src\\main\\res\\menu\\main.xml"
     },
     {
         "merged": "D:\\0. TSC Office\\SampleChat\\app\\build\\intermediates\\res\\merged\\debug\\layout_login_activity.xml.flat",
         "source": "D:\\0. TSC Office\\SampleChat\\app\\src\\main\\res\\layout\\login_activity.xml"
     },
     {
-        "merged": "D:\\0. TSC Office\\SampleChat\\app\\build\\intermediates\\res\\merged\\debug\\drawable_rect_round.xml.flat",
-        "source": "D:\\0. TSC Office\\SampleChat\\app\\src\\main\\res\\drawable\\rect_round.xml"
+        "merged": "D:\\0. TSC Office\\SampleChat\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "D:\\0. TSC Office\\SampleChat\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\0. TSC Office\\SampleChat\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_balloon_incoming_normal.9.png.flat",
+        "source": "D:\\0. TSC Office\\SampleChat\\app\\src\\main\\res\\drawable-hdpi\\balloon_incoming_normal.9.png"
     },
     {
         "merged": "D:\\0. TSC Office\\SampleChat\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_foreground.png.flat",
         "source": "D:\\0. TSC Office\\SampleChat\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "D:\\0. TSC Office\\SampleChat\\app\\build\\intermediates\\res\\merged\\debug\\drawable_rect_round.xml.flat",
+        "source": "D:\\0. TSC Office\\SampleChat\\app\\src\\main\\res\\drawable\\rect_round.xml"
     },
     {
         "merged": "D:\\0. TSC Office\\SampleChat\\app\\build\\intermediates\\res\\merged\\debug\\drawable_logo.png.flat",

@@ -24,6 +24,11 @@ import java.util.HashMap;
 
 public class application extends Application {
 
+
+
+    public static boolean status=false;
+
+
     FirebaseDatabase database;
 
     DatabaseReference userRef;
@@ -44,6 +49,10 @@ public class application extends Application {
     DatabaseReference checkUserExistDatabaseRef;
     ValueEventListener checkUserExistListener;
 
+
+    DatabaseReference networkStatusDatabaseRef;
+
+
     SharedPreferences mPrefs;
 
     @Override
@@ -56,9 +65,11 @@ public class application extends Application {
         lastMessageRef = database.getReference("users/");
         messageRef = database.getReference("messages/");
         senderMessageRef = database.getReference("messages/");
+        networkStatusDatabaseRef = database.getReference(".info/connected/");
+
 
         getUserContacts();
-
+        checkOnlineOfflineStatus();
     }
 
     public void checkIfUserExist(String username, UserVerificationCallback userVerificationCallback) {
@@ -236,5 +247,41 @@ public class application extends Application {
         userRef.child(username).child("loggedIn").setValue(false);
     }
 
+    public void loginUser(String username){
+        userRef.child(username).child("loggedIn").setValue(true);
+    }
+
+
+    public void checkOnlineOfflineStatus(){
+
+
+        networkStatusDatabaseRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                boolean connected = snapshot.getValue(Boolean.class);
+                if (connected) {
+                    status=true;
+
+                    Intent intent = new Intent(Constants.USER_STATUS);
+                    intent.putExtra(Constants.STATUS, status);
+                    LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
+
+
+                } else {
+                    status=false;
+
+                    Intent intent = new Intent(Constants.USER_STATUS);
+                    intent.putExtra(Constants.STATUS, status);
+                    LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                status=false;
+            }
+        });
+    }
 
 }

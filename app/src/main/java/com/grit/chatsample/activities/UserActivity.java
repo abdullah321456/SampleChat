@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.ybq.android.spinkit.SpinKitView;
+import com.google.android.material.snackbar.Snackbar;
 import com.grit.chatsample.Constants.Constants;
 import com.grit.chatsample.MainActivity;
 import com.grit.chatsample.R;
@@ -39,6 +40,7 @@ public class UserActivity extends AppCompatActivity implements Toolbar.OnMenuIte
     SharedPreferences mPrefs;
     SpinKitView spin_kit;
     TextView tv_online_status;
+    boolean status;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,11 +59,15 @@ public class UserActivity extends AppCompatActivity implements Toolbar.OnMenuIte
     @Override
     protected void onResume() {
         super.onResume();
-        spin_kit.setVisibility(View.VISIBLE);
-        app.getUserContacts();
+
         LocalBroadcastManager.getInstance(UserActivity.this).registerReceiver(addNewUserBroadcastReceiver,
                 new IntentFilter(Constants.ADD_NEW_USER));
 
+        LocalBroadcastManager.getInstance(UserActivity.this).registerReceiver(userStatusBroadcastReceiver,
+                new IntentFilter(Constants.USER_STATUS));
+
+        app.getUserContacts();
+        spin_kit.setVisibility(View.VISIBLE);
     }
 
 
@@ -84,15 +90,41 @@ public class UserActivity extends AppCompatActivity implements Toolbar.OnMenuIte
         }
     };
 
+
+    private BroadcastReceiver userStatusBroadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            status = intent.getBooleanExtra(Constants.STATUS,false);
+
+            if(status){
+                tv_online_status.setText("Online");
+            }else{
+                tv_online_status.setText("Offline");
+
+                Snackbar snackbar = Snackbar.make(userListView, "Please check your internet connection",
+                        Snackbar.LENGTH_LONG);
+                View snackbarView = snackbar.getView();
+                snackbarView.setBackgroundColor(getResources().getColor(R.color.red));
+                snackbar.show();
+            }
+        }
+    };
+
+
     public void setClickListeners(ContactsAdapter adapter) {
         if (adapter != null) {
             adapter.setOnClickListener(new ContactsAdapter.ClickListener() {
                 @Override
                 public void onRowClick(int position, ArrayList<Users> list) {
                     if (position != -1) {
-                        Users receiver = list.get(position);
-                        startActivity(new Intent(UserActivity.this, ChatActivity.class)
-                                        .putExtra("receiver_name", receiver.getUsername()));
+                        if(status){
+                            Users receiver = list.get(position);
+                            startActivity(new Intent(UserActivity.this, ChatActivity.class)
+                                    .putExtra("receiver_name", receiver.getUsername()));
+                        }else{
+                            Toast.makeText(getApplicationContext(), "Please check internet connection",
+                                    Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
 
@@ -119,5 +151,8 @@ public class UserActivity extends AppCompatActivity implements Toolbar.OnMenuIte
     protected void onDestroy() {
         super.onDestroy();
         LocalBroadcastManager.getInstance(UserActivity.this).unregisterReceiver(addNewUserBroadcastReceiver);
+        LocalBroadcastManager.getInstance(UserActivity.this).registerReceiver(userStatusBroadcastReceiver,
+                new IntentFilter(Constants.USER_STATUS));
+
     }
 }
