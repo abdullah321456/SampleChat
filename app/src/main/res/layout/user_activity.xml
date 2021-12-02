@@ -41,7 +41,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_app_name"
                     android:text=""
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/_10sdp" />
 
             </RelativeLayout>

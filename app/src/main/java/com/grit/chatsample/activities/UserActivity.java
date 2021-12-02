@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -37,6 +38,7 @@ public class UserActivity extends AppCompatActivity implements Toolbar.OnMenuIte
     private ContactsAdapter adapter;
     SharedPreferences mPrefs;
     SpinKitView spin_kit;
+    TextView tv_online_status;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,7 @@ public class UserActivity extends AppCompatActivity implements Toolbar.OnMenuIte
         app=(application) getApplicationContext();
         userListView = findViewById(R.id.userListView);
         spin_kit = findViewById(R.id.spin_kit);
+        tv_online_status = findViewById(R.id.tv_online_status);
         Toolbar toolbar= (Toolbar) findViewById(R.id.toolbar);
         toolbar.inflateMenu(R.menu.main);
         toolbar.setOnMenuItemClickListener(this);
@@ -72,7 +75,7 @@ public class UserActivity extends AppCompatActivity implements Toolbar.OnMenuIte
 
             String userName = mPrefs.getString("username", "");
 
-            adapter = new ContactsAdapter(UserActivity.this, user,userName);
+            adapter = new ContactsAdapter(UserActivity.this, user, userName);
             userListView.setAdapter(adapter);
 
             setClickListeners(adapter);
@@ -101,6 +104,7 @@ public class UserActivity extends AppCompatActivity implements Toolbar.OnMenuIte
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.logout:
+                app.logoutUser(mPrefs.getString("username", ""));
                 mPrefs.edit().putString("username", "").apply();
                 mPrefs.edit().putString("password", "").apply();
                 Intent mIntent = new Intent(UserActivity.this, LoginActivity.class);

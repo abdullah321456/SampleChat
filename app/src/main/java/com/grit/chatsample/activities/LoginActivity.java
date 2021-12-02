@@ -90,23 +90,32 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void handleVerification(boolean success, String message, Users user) {
                             if(success){
-                                String serverPassword = user.getPassword();
-                                if(serverPassword.equalsIgnoreCase(password.getText().toString())){
-//                                    AestheticDialog.showFlashDialog(LoginActivity.this, "Success",
-//                                            "User login successfully", AestheticDialog.SUCCESS);
-                                    mPrefs.edit().putString("username", username.getText().toString()).apply();
-                                    mPrefs.edit().putString("password", password.getText().toString()).apply();
-                                    spin_kit.setVisibility(View.GONE);
-                                    Intent mIntent = new Intent(LoginActivity.this, UserActivity.class);
-                                    startActivity(mIntent);
-                                    finish();
 
-                                }else{
-                                    Snackbar snackbar = Snackbar.make(view, "Password not correct, please use correct password",
+                                if(user.isLoggedIn()){
+                                    Snackbar snackbar = Snackbar.make(view, "User already login! please use other user",
                                             Snackbar.LENGTH_LONG);
                                     View snackbarView = snackbar.getView();
                                     snackbarView.setBackgroundColor(getResources().getColor(R.color.red));
                                     snackbar.show();
+                                }else{
+                                    String serverPassword = user.getPassword();
+                                    if(serverPassword.equalsIgnoreCase(password.getText().toString())){
+//                                    AestheticDialog.showFlashDialog(LoginActivity.this, "Success",
+//                                            "User login successfully", AestheticDialog.SUCCESS);
+                                        mPrefs.edit().putString("username", username.getText().toString()).apply();
+                                        mPrefs.edit().putString("password", password.getText().toString()).apply();
+                                        spin_kit.setVisibility(View.GONE);
+                                        Intent mIntent = new Intent(LoginActivity.this, UserActivity.class);
+                                        startActivity(mIntent);
+                                        finish();
+
+                                    }else{
+                                        Snackbar snackbar = Snackbar.make(view, "Password not correct, please use correct password",
+                                                Snackbar.LENGTH_LONG);
+                                        View snackbarView = snackbar.getView();
+                                        snackbarView.setBackgroundColor(getResources().getColor(R.color.red));
+                                        snackbar.show();
+                                    }
                                 }
                             }else{
                                 Snackbar snackbar = Snackbar.make(view, "Username not exist, please sign up",
