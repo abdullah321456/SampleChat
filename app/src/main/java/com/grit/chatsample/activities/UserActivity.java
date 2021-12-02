@@ -69,7 +69,10 @@ public class UserActivity extends AppCompatActivity implements Toolbar.OnMenuIte
 
             LinearLayoutManager layoutManager = new LinearLayoutManager(context);
             userListView.setLayoutManager(layoutManager);
-            adapter = new ContactsAdapter(UserActivity.this, user);
+
+            String userName = mPrefs.getString("username", "");
+
+            adapter = new ContactsAdapter(UserActivity.this, user,userName);
             userListView.setAdapter(adapter);
 
             setClickListeners(adapter);

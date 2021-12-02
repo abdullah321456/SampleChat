@@ -16,6 +16,9 @@ import com.grit.chatsample.application;
 import com.grit.chatsample.pojos.Users;
 import com.thecode.aestheticdialogs.AestheticDialog;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class RegisterActivity extends AppCompatActivity {
 
 
@@ -85,7 +88,7 @@ public class RegisterActivity extends AppCompatActivity {
                             spin_kit.setVisibility(View.GONE);
                             if(success){
                                 app.registerUser(new Users(username.getText().toString(),
-                                        password.getText().toString(),""));
+                                        password.getText().toString(),new HashMap<>(),true));
 
                                 AestheticDialog.showFlashDialog(RegisterActivity.this, "Success",
                                         "User register successfully! please login", AestheticDialog.SUCCESS);

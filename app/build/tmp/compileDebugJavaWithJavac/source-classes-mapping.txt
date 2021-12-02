@@ -1,40 +1,39 @@
-com/grit/chatsample/BuildConfig.java
- com.grit.chatsample.BuildConfig
-com/grit/chatsample/pojos/Message.java
- com.grit.chatsample.pojos.Message
- com.grit.chatsample.pojos.Message$1
-com/grit/chatsample/pojos/Users.java
- com.grit.chatsample.pojos.Users
- com.grit.chatsample.pojos.Users$1
-com/grit/chatsample/Constants/Constants.java
- com.grit.chatsample.Constants.Constants
-com/grit/chatsample/Interface/UserVerificationCallback.java
- com.grit.chatsample.Interface.UserVerificationCallback
-com/grit/chatsample/MainActivity.java
- com.grit.chatsample.MainActivity
- com.grit.chatsample.MainActivity$1
- com.grit.chatsample.MainActivity$2
-com/grit/chatsample/utils/DateUtils.java
- com.grit.chatsample.utils.DateUtils
-com/grit/chatsample/adapters/ContactsAdapter.java
- com.grit.chatsample.adapters.ContactsAdapter
- com.grit.chatsample.adapters.ContactsAdapter$ClickListener
- com.grit.chatsample.adapters.ContactsAdapter$ContactsViewHolder
+com/grit/chatsample/adapters/ChatAdapter.java
+ com.grit.chatsample.adapters.ChatAdapter
+ com.grit.chatsample.adapters.ChatAdapter$ChatViewHolder
 com/grit/chatsample/application.java
  com.grit.chatsample.application
  com.grit.chatsample.application$1
  com.grit.chatsample.application$2
  com.grit.chatsample.application$3
  com.grit.chatsample.application$4
- com.grit.chatsample.application$5
 com/grit/chatsample/activities/LoginActivity.java
  com.grit.chatsample.activities.LoginActivity
  com.grit.chatsample.activities.LoginActivity$1
  com.grit.chatsample.activities.LoginActivity$2
  com.grit.chatsample.activities.LoginActivity$2$1
-com/grit/chatsample/adapters/ChatAdapter.java
- com.grit.chatsample.adapters.ChatAdapter
- com.grit.chatsample.adapters.ChatAdapter$ChatViewHolder
+com/grit/chatsample/Constants/Constants.java
+ com.grit.chatsample.Constants.Constants
+com/grit/chatsample/pojos/Message.java
+ com.grit.chatsample.pojos.Message
+ com.grit.chatsample.pojos.Message$1
+com/grit/chatsample/MainActivity.java
+ com.grit.chatsample.MainActivity
+ com.grit.chatsample.MainActivity$1
+ com.grit.chatsample.MainActivity$2
+com/grit/chatsample/pojos/Users.java
+ com.grit.chatsample.pojos.Users
+ com.grit.chatsample.pojos.Users$1
+com/grit/chatsample/BuildConfig.java
+ com.grit.chatsample.BuildConfig
+com/grit/chatsample/utils/DateUtils.java
+ com.grit.chatsample.utils.DateUtils
+com/grit/chatsample/adapters/ContactsAdapter.java
+ com.grit.chatsample.adapters.ContactsAdapter
+ com.grit.chatsample.adapters.ContactsAdapter$ClickListener
+ com.grit.chatsample.adapters.ContactsAdapter$ContactsViewHolder
+com/grit/chatsample/Interface/UserVerificationCallback.java
+ com.grit.chatsample.Interface.UserVerificationCallback
 com/grit/chatsample/activities/RegisterActivity.java
  com.grit.chatsample.activities.RegisterActivity
  com.grit.chatsample.activities.RegisterActivity$1
@@ -46,6 +45,5 @@ com/grit/chatsample/activities/UserActivity.java
 com/grit/chatsample/activities/ChatActivity.java
  com.grit.chatsample.activities.ChatActivity
  com.grit.chatsample.activities.ChatActivity$1
- com.grit.chatsample.activities.ChatActivity$1$1
  com.grit.chatsample.activities.ChatActivity$2
  com.grit.chatsample.activities.ChatActivity$3

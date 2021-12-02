@@ -3,21 +3,26 @@ package com.grit.chatsample.pojos;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Users implements Parcelable {
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class Users implements Parcelable  {
 
     public Users(){
 
     }
-    public Users(String username,String password,String lastMessage){
+    public Users(String username,String password,HashMap<String,String> lastMessage,boolean isLoggedIn){
         this.username=username;
         this.password=password;
         this.lastMessage=lastMessage;
+        this.isLoggedIn=isLoggedIn;
     }
+
 
     protected Users(Parcel in) {
         username = in.readString();
         password = in.readString();
-        lastMessage = in.readString();
+        isLoggedIn = in.readByte() != 0;
     }
 
     public static final Creator<Users> CREATOR = new Creator<Users>() {
@@ -51,15 +56,26 @@ public class Users implements Parcelable {
     String username;
     String password;
 
-    public String getLastMessage() {
+    public HashMap<String, String> getLastMessage() {
         return lastMessage;
     }
 
-    public void setLastMessage(String lastMessage) {
+    public void setLastMessage(HashMap<String, String> lastMessage) {
         this.lastMessage = lastMessage;
     }
 
-    String lastMessage;
+    HashMap<String,String> lastMessage;
+
+    public boolean isLoggedIn() {
+        return isLoggedIn;
+    }
+
+    public void setLoggedIn(boolean loggedIn) {
+        isLoggedIn = loggedIn;
+    }
+
+    boolean isLoggedIn;
+
 
     @Override
     public int describeContents() {
@@ -67,9 +83,9 @@ public class Users implements Parcelable {
     }
 
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(username);
-        dest.writeString(password);
-        dest.writeString(lastMessage);
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(username);
+        parcel.writeString(password);
+        parcel.writeByte((byte) (isLoggedIn ? 1 : 0));
     }
 }

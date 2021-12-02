@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -18,6 +20,7 @@ import com.grit.chatsample.pojos.Message;
 import com.grit.chatsample.pojos.Users;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class application extends Application {
 
@@ -128,26 +131,13 @@ public class application extends Application {
 
     }
 
-    public void updateUserLastMessage(String user, String message) {
+    public void updateUserLastMessage(String user,String otherUser, String message) {
 
         if (lastMessageEventListener != null && lastMessageRef != null) {
             lastMessageRef.removeEventListener(lastMessageEventListener);
         }
 
-        lastMessageEventListener = userRef.child(user).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Users prevUser=snapshot.getValue(Users.class);
-                prevUser.setLastMessage(message);
-                lastMessageRef.child(user).setValue(prevUser);
-            }
-
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+        lastMessageRef.child(user).child("lastMessage").child(otherUser).setValue(message);
     }
 
     public void getUserContacts(){
@@ -183,7 +173,40 @@ public class application extends Application {
         }
 
 
-        senderMessageRef.child(receiver+"_"+sender).addValueEventListener(new ValueEventListener() {
+        /*senderEventListener=senderMessageRef.child(receiver+"_"+sender).addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                ArrayList<Message> messageArrayList=new ArrayList<>();
+                Message message=snapshot.getValue(Message.class);
+                messageArrayList.add(message);
+
+                Intent intent = new Intent(Constants.ADD_NEW_MESSAGE);
+                intent.putParcelableArrayListExtra(Constants.MESSAGE, messageArrayList);
+                LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });*/
+
+        senderEventListener=senderMessageRef.child(receiver+"_"+sender).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
@@ -205,9 +228,9 @@ public class application extends Application {
             }
         });
 
-
-
-
     }
+
+
+
 
 }
