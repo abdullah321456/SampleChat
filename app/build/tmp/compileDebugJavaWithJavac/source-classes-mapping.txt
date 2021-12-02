@@ -27,11 +27,12 @@ com/grit/chatsample/application.java
  com.grit.chatsample.application$3
  com.grit.chatsample.application$4
  com.grit.chatsample.application$5
-com/grit/chatsample/activities/LoginActivity.java
- com.grit.chatsample.activities.LoginActivity
- com.grit.chatsample.activities.LoginActivity$1
- com.grit.chatsample.activities.LoginActivity$2
- com.grit.chatsample.activities.LoginActivity$2$1
+com/grit/chatsample/activities/ChatActivity.java
+ com.grit.chatsample.activities.ChatActivity
+ com.grit.chatsample.activities.ChatActivity$1
+ com.grit.chatsample.activities.ChatActivity$1$1
+ com.grit.chatsample.activities.ChatActivity$2
+ com.grit.chatsample.activities.ChatActivity$3
 com/grit/chatsample/adapters/ChatAdapter.java
  com.grit.chatsample.adapters.ChatAdapter
  com.grit.chatsample.adapters.ChatAdapter$ChatViewHolder
@@ -39,13 +40,12 @@ com/grit/chatsample/activities/RegisterActivity.java
  com.grit.chatsample.activities.RegisterActivity
  com.grit.chatsample.activities.RegisterActivity$1
  com.grit.chatsample.activities.RegisterActivity$1$1
+com/grit/chatsample/activities/LoginActivity.java
+ com.grit.chatsample.activities.LoginActivity
+ com.grit.chatsample.activities.LoginActivity$1
+ com.grit.chatsample.activities.LoginActivity$2
+ com.grit.chatsample.activities.LoginActivity$2$1
 com/grit/chatsample/activities/UserActivity.java
  com.grit.chatsample.activities.UserActivity
  com.grit.chatsample.activities.UserActivity$1
  com.grit.chatsample.activities.UserActivity$2
-com/grit/chatsample/activities/ChatActivity.java
- com.grit.chatsample.activities.ChatActivity
- com.grit.chatsample.activities.ChatActivity$1
- com.grit.chatsample.activities.ChatActivity$1$1
- com.grit.chatsample.activities.ChatActivity$2
- com.grit.chatsample.activities.ChatActivity$3
