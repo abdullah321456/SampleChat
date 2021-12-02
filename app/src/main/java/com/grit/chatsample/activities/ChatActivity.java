@@ -75,14 +75,17 @@ public class ChatActivity extends AppCompatActivity{
 
         initRecyclerView();
 
+        app.getUserMessages(sender_name,receiver_name);
+
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
+
         spin_kit.setVisibility(View.VISIBLE);
-        app.getUserMessages(sender_name, receiver_name);
 
         LocalBroadcastManager.getInstance(ChatActivity.this).registerReceiver(addNewMessageBroadcastReceiver,
                 new IntentFilter(Constants.ADD_NEW_MESSAGE));
@@ -92,22 +95,41 @@ public class ChatActivity extends AppCompatActivity{
         @Override
         public void onReceive(Context context, Intent intent) {
 
-            chatMessages = intent.getParcelableArrayListExtra(Constants.MESSAGE);
+            ArrayList<Message> tempChatMessages = intent.getParcelableArrayListExtra(Constants.MESSAGE);
 
+            chatMessages=new ArrayList<>();
+
+            chatMessages.addAll(tempChatMessages);
             adapter = new ChatAdapter(ChatActivity.this
                     , recyclerView
                     , chatMessages
                     , mPrefs);
 
-            DefaultItemAnimator animator = new DefaultItemAnimator() {
+
+            /*if(chatMessages.size()>0){
+                chatMessages.addAll(tempChatMessages);
+                adapter.notifyDataSetChanged();
+            }else{ chatMessages.addAll(tempChatMessages);
+
+                adapter = new ChatAdapter(ChatActivity.this
+                        , recyclerView
+                        , chatMessages
+                        , mPrefs);
+            }*/
+
+            /*DefaultItemAnimator animator = new DefaultItemAnimator() {
                 @Override
                 public boolean canReuseUpdatedViewHolder(RecyclerView.ViewHolder viewHolder) {
                     return true;
                 }
             };
 
-            recyclerView.setItemAnimator(animator);
+            recyclerView.setItemAnimator(animator);*/
+
+
             recyclerView.setAdapter(adapter);
+            recyclerView.scrollToPosition(chatMessages.size()-1);
+
             spin_kit.setVisibility(View.GONE);
         }
     };
@@ -145,10 +167,9 @@ public class ChatActivity extends AppCompatActivity{
                     String date = String.valueOf(android.text.format.DateFormat.format("dd-MM-yyyy", new java.util.Date()));
 
                     app.pushMessage(new Message(sender_name, message, date), sender_name, receiver_name);
-                    app.updateUserLastMessage(sender_name, message);
-                    app.updateUserLastMessage(receiver_name, message);
+                    app.updateUserLastMessage(sender_name,receiver_name, message);
+                    app.updateUserLastMessage(receiver_name,sender_name, message);
 
-                    app.getUserMessages(sender_name, receiver_name);
 
                     message_edt.setText("");
                 }
@@ -192,4 +213,7 @@ public class ChatActivity extends AppCompatActivity{
         mSendButton = (com.google.android.material.floatingactionbutton.FloatingActionButton) findViewById(R.id.sendButton);
         message_edt = (EditText) findViewById(R.id.message);
     }
+
+
+
 }

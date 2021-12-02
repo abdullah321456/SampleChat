@@ -16,16 +16,16 @@
         "source": "D:\\0. TSC Office\\SampleChat\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png"
     },
     {
-        "merged": "D:\\0. TSC Office\\SampleChat\\app\\build\\intermediates\\res\\merged\\debug\\layout_login_activity.xml.flat",
-        "source": "D:\\0. TSC Office\\SampleChat\\app\\src\\main\\res\\layout\\login_activity.xml"
+        "merged": "D:\\0. TSC Office\\SampleChat\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_balloon_incoming_normal.9.png.flat",
+        "source": "D:\\0. TSC Office\\SampleChat\\app\\src\\main\\res\\drawable-hdpi\\balloon_incoming_normal.9.png"
     },
     {
         "merged": "D:\\0. TSC Office\\SampleChat\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
         "source": "D:\\0. TSC Office\\SampleChat\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
     },
     {
-        "merged": "D:\\0. TSC Office\\SampleChat\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_balloon_incoming_normal.9.png.flat",
-        "source": "D:\\0. TSC Office\\SampleChat\\app\\src\\main\\res\\drawable-hdpi\\balloon_incoming_normal.9.png"
+        "merged": "D:\\0. TSC Office\\SampleChat\\app\\build\\intermediates\\res\\merged\\debug\\layout_login_activity.xml.flat",
+        "source": "D:\\0. TSC Office\\SampleChat\\app\\src\\main\\res\\layout\\login_activity.xml"
     },
     {
         "merged": "D:\\0. TSC Office\\SampleChat\\app\\build\\intermediates\\res\\merged\\debug\\drawable_rect_round.xml.flat",
@@ -108,12 +108,12 @@
         "source": "D:\\0. TSC Office\\SampleChat\\app\\src\\main\\res\\drawable\\btn_signup.xml"
     },
     {
-        "merged": "D:\\0. TSC Office\\SampleChat\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "D:\\0. TSC Office\\SampleChat\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
-    },
-    {
         "merged": "D:\\0. TSC Office\\SampleChat\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_balloon_outgoing_normal.9.png.flat",
         "source": "D:\\0. TSC Office\\SampleChat\\app\\src\\main\\res\\drawable-hdpi\\balloon_outgoing_normal.9.png"
+    },
+    {
+        "merged": "D:\\0. TSC Office\\SampleChat\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "D:\\0. TSC Office\\SampleChat\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
         "merged": "D:\\0. TSC Office\\SampleChat\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
@@ -128,16 +128,16 @@
         "source": "D:\\0. TSC Office\\SampleChat\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     },
     {
-        "merged": "D:\\0. TSC Office\\SampleChat\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
-        "source": "D:\\0. TSC Office\\SampleChat\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+        "merged": "D:\\0. TSC Office\\SampleChat\\app\\build\\intermediates\\res\\merged\\debug\\drawable_chat_bg.png.flat",
+        "source": "D:\\0. TSC Office\\SampleChat\\app\\src\\main\\res\\drawable\\chat_bg.png"
     },
     {
         "merged": "D:\\0. TSC Office\\SampleChat\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_message_receiver.xml.flat",
         "source": "D:\\0. TSC Office\\SampleChat\\app\\src\\main\\res\\layout\\item_message_receiver.xml"
     },
     {
-        "merged": "D:\\0. TSC Office\\SampleChat\\app\\build\\intermediates\\res\\merged\\debug\\drawable_chat_bg.png.flat",
-        "source": "D:\\0. TSC Office\\SampleChat\\app\\src\\main\\res\\drawable\\chat_bg.png"
+        "merged": "D:\\0. TSC Office\\SampleChat\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "D:\\0. TSC Office\\SampleChat\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
     },
     {
         "merged": "D:\\0. TSC Office\\SampleChat\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_close.xml.flat",

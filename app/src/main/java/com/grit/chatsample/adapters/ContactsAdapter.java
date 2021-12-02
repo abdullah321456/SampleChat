@@ -22,16 +22,20 @@ import com.grit.chatsample.pojos.Users;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ContactsViewHolder> {
 
     public ArrayList<Users> list;
     AppCompatActivity act;
     ClickListener listener;
+    String userName;
 
-    public ContactsAdapter(AppCompatActivity act, ArrayList<Users> list) {
+
+    public ContactsAdapter(AppCompatActivity act, ArrayList<Users> list,String userName) {
         this.act = act;
         this.list = list;
+        this.userName=userName;
     }
 
     public interface ClickListener {
@@ -76,7 +80,12 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.Contac
         Users user = list.get(position);
         if (user != null) {
             String username = user.getUsername();
-            String last_message = user.getLastMessage();
+            String last_message="";
+            HashMap<String,String> lastMessageHash = user.getLastMessage();
+
+            if(lastMessageHash!=null && lastMessageHash.get(userName)!=null && lastMessageHash.get(userName).length()>0){
+                last_message=lastMessageHash.get(userName);
+            }
 
             holder.tittle.setText(username);
             holder.tvLastMessage.setText(last_message);
