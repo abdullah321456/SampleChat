@@ -232,5 +232,9 @@ public class application extends Application {
 
 
 
+    public void logoutUser(String username){
+        userRef.child(username).child("loggedIn").setValue(false);
+    }
+
 
 }
