@@ -68,6 +68,11 @@ public class MainActivity extends AppCompatActivity {
         LocalBroadcastManager.getInstance(MainActivity.this).registerReceiver(addNewMessageBroadcastReceiver,
                 new IntentFilter(Constants.ADD_NEW_MESSAGE));
 
+
+        LocalBroadcastManager.getInstance(MainActivity.this).registerReceiver(userStatusBroadcastReceiver,
+                new IntentFilter(Constants.USER_STATUS));
+
+
     }
 
 
@@ -88,11 +93,23 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"Add New Message = "+messageArrayList.size(),Toast.LENGTH_SHORT).show();
         }
     };
+
+    private BroadcastReceiver userStatusBroadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            boolean status = intent.getBooleanExtra(Constants.STATUS,false);
+            Toast.makeText(getApplicationContext(),"User status = "+status,Toast.LENGTH_SHORT).show();
+        }
+    };
+
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         LocalBroadcastManager.getInstance(MainActivity.this).unregisterReceiver(addNewUserBroadcastReceiver);
         LocalBroadcastManager.getInstance(MainActivity.this).unregisterReceiver(addNewMessageBroadcastReceiver);
+        LocalBroadcastManager.getInstance(MainActivity.this).registerReceiver(userStatusBroadcastReceiver,
+                new IntentFilter(Constants.USER_STATUS));
 
     }
 

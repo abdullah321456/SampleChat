@@ -59,6 +59,10 @@ public class UserActivity extends AppCompatActivity implements Toolbar.OnMenuIte
         LocalBroadcastManager.getInstance(UserActivity.this).registerReceiver(addNewUserBroadcastReceiver,
                 new IntentFilter(Constants.ADD_NEW_USER));
 
+        LocalBroadcastManager.getInstance(UserActivity.this).registerReceiver(userStatusBroadcastReceiver,
+                new IntentFilter(Constants.USER_STATUS));
+
+
     }
 
 
@@ -80,6 +84,16 @@ public class UserActivity extends AppCompatActivity implements Toolbar.OnMenuIte
             spin_kit.setVisibility(View.GONE);
         }
     };
+
+
+    private BroadcastReceiver userStatusBroadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            boolean status = intent.getBooleanExtra(Constants.STATUS,false);
+            Toast.makeText(getApplicationContext(),"User status = "+status,Toast.LENGTH_SHORT).show();
+        }
+    };
+
 
     public void setClickListeners(ContactsAdapter adapter) {
         if (adapter != null) {
@@ -115,5 +129,8 @@ public class UserActivity extends AppCompatActivity implements Toolbar.OnMenuIte
     protected void onDestroy() {
         super.onDestroy();
         LocalBroadcastManager.getInstance(UserActivity.this).unregisterReceiver(addNewUserBroadcastReceiver);
+        LocalBroadcastManager.getInstance(UserActivity.this).registerReceiver(userStatusBroadcastReceiver,
+                new IntentFilter(Constants.USER_STATUS));
+
     }
 }
